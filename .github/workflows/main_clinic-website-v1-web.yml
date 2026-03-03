@@ -62,6 +62,16 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9E5AA56188004C0B8D958098C429261E }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_55292AAAF9DB4CCEAE127092D9FC2F24 }}
 
+      - name: Configure Azure Web App settings
+        run: |
+          az webapp config appsettings set \
+            --name clinic-website-v1-web \
+            --resource-group clinic-website-v1 \
+            --settings \
+              HOSTNAME=0.0.0.0 \
+              SCM_DO_BUILD_DURING_DEPLOYMENT=false \
+              WEBSITE_NODE_DEFAULT_VERSION=~20
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
@@ -69,4 +79,4 @@ jobs:
           app-name: 'clinic-website-v1-web'
           slot-name: 'Production'
           package: .
-          startup-command: 'HOSTNAME=0.0.0.0 node server.js'
+          startup-command: 'node server.js'
