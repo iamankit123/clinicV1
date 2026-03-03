@@ -69,4 +69,4 @@ jobs:
           app-name: 'clinic-website-v1-web'
           slot-name: 'Production'
           package: .
-          startup-command: 'node server.js'
+          startup-command: 'HOSTNAME=0.0.0.0 node server.js'
