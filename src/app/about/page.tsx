@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import SectionHeading from "@/components/SectionHeading";
 import { CLINIC, DOCTOR } from "@/lib/constants";
@@ -135,6 +136,40 @@ export default function AboutPage() {
                 </div>
               </div>
             </AnimateOnScroll>
+          </div>
+        </div>
+      </section>
+
+      {/* Clinic Gallery */}
+      <section className="bg-white py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <AnimateOnScroll>
+            <SectionHeading
+              label="Inside Our Clinic"
+              title="See the Space"
+              subtitle="A welcoming, modern environment designed to put you at ease from the moment you walk in."
+            />
+          </AnimateOnScroll>
+
+          <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { src: "/clinic-images/clinic1.png", alt: "Clinic interior" },
+              { src: "/clinic-images/clinic2.png", alt: "Treatment room" },
+              { src: "/clinic-images/clinic3.png", alt: "Aesthetics suite" },
+              { src: "/clinic-images/clinic4.png", alt: "Clinic entrance" },
+            ].map((img, idx) => (
+              <AnimateOnScroll key={img.src} delay={idx * 100}>
+                <div className="group relative aspect-square overflow-hidden rounded-2xl">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
+              </AnimateOnScroll>
+            ))}
           </div>
         </div>
       </section>

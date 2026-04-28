@@ -132,7 +132,7 @@ export default function ContactPage() {
                 <div className="mt-10 overflow-hidden rounded-2xl border border-cream-200">
                   <iframe
                     title="Clinic Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.5!2d77.16!3d28.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSwaroop+Nagar+Delhi!5e0!3m2!1sen!2sin!4v1700000000000"
+                    src={CLINIC.mapUrl}
                     width="100%"
                     height="300"
                     style={{ border: 0 }}
@@ -185,6 +185,7 @@ export default function ContactPage() {
                       <input
                         type="text"
                         id="contact-name"
+                        name="name"
                         required
                         className="mt-2 block w-full rounded-xl border border-cream-200 bg-white px-4 py-3.5 text-sm text-charcoal-800 outline-none transition-all duration-300 placeholder:text-charcoal-300 focus:border-burgundy-300 focus:ring-2 focus:ring-burgundy-100"
                         placeholder="Full name"
@@ -199,6 +200,7 @@ export default function ContactPage() {
                         <input
                           type="email"
                           id="contact-email"
+                          name="email"
                           required
                           className="mt-2 block w-full rounded-xl border border-cream-200 bg-white px-4 py-3.5 text-sm text-charcoal-800 outline-none transition-all duration-300 placeholder:text-charcoal-300 focus:border-burgundy-300 focus:ring-2 focus:ring-burgundy-100"
                           placeholder="your@email.com"
@@ -211,6 +213,7 @@ export default function ContactPage() {
                         <input
                           type="tel"
                           id="contact-phone"
+                          name="phone"
                           className="mt-2 block w-full rounded-xl border border-cream-200 bg-white px-4 py-3.5 text-sm text-charcoal-800 outline-none transition-all duration-300 placeholder:text-charcoal-300 focus:border-burgundy-300 focus:ring-2 focus:ring-burgundy-100"
                           placeholder="+91 XXXXX XXXXX"
                         />
@@ -224,6 +227,7 @@ export default function ContactPage() {
                       <input
                         type="text"
                         id="contact-subject"
+                        name="subject"
                         className="mt-2 block w-full rounded-xl border border-cream-200 bg-white px-4 py-3.5 text-sm text-charcoal-800 outline-none transition-all duration-300 placeholder:text-charcoal-300 focus:border-burgundy-300 focus:ring-2 focus:ring-burgundy-100"
                         placeholder="How can we help?"
                       />
@@ -235,6 +239,7 @@ export default function ContactPage() {
                       </label>
                       <textarea
                         id="contact-message"
+                        name="message"
                         required
                         rows={5}
                         className="mt-2 block w-full resize-none rounded-xl border border-cream-200 bg-white px-4 py-3.5 text-sm text-charcoal-800 outline-none transition-all duration-300 placeholder:text-charcoal-300 focus:border-burgundy-300 focus:ring-2 focus:ring-burgundy-100"

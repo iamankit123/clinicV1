@@ -6,13 +6,13 @@ export const CLINIC = {
   tagline: "Where Science Meets Elegance",
   description:
     "Premium dental, skin, and aesthetic treatments delivered with precision and care by Dr. Shivani Singh in the heart of Delhi.",
-  address: "KH.NO.391, Main Kushak Road, Swaroop Nagar, Delhi - 110042",
+  address: "Khasra No. 391, Main Kushak Road, Block J, Swaroop Nagar, Bhalswa, Delhi - 110042",
   phones: ["+91 82873 72644", "+91 89792 63949"],
   email: "drshivanicare@gmail.com",
   timing: "10:00 AM — 9:00 PM",
   days: "Monday — Saturday",
   mapUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.5!2d77.16!3d28.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSwaroop+Nagar+Delhi!5e0!3m2!1sen!2sin!4v1700000000000",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.624!2d77.1472938!3d28.7597276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d01201e0578a9%3A0xe59c61302f7f2551!2sDr.+Shivani+Medical+And+Dental+Care!5e0!3m2!1sen!2sin!4v1714316544000!5m2!1sen!2sin",
 } as const;
 
 export const DOCTOR = {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
@@ -19,60 +20,85 @@ function Hero() {
       <div className="absolute bottom-0 left-0 h-[400px] w-[400px] -translate-x-1/4 translate-y-1/4 rounded-full bg-gradient-to-tr from-gold-50 to-burgundy-50 opacity-40 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-6 py-32 lg:px-8 lg:py-40">
-        <div className="max-w-3xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-gold-200 bg-white/80 px-4 py-1.5 text-xs font-medium tracking-wide text-gold-600 shadow-sm backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
-            Premium Dental & Aesthetic Clinic — Delhi
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          {/* Left — text */}
+          <div>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-gold-200 bg-white/80 px-4 py-1.5 text-xs font-medium tracking-wide text-gold-600 shadow-sm backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
+              Premium Dental & Aesthetic Clinic — Delhi
+            </div>
+
+            {/* Main heading */}
+            <h1 className="mt-8 font-serif text-4xl font-semibold leading-[1.15] text-charcoal-800 sm:text-5xl md:text-6xl lg:text-7xl">
+              Where Science
+              <br />
+              Meets{" "}
+              <span className="text-gold-gradient">Elegance</span>
+            </h1>
+
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-charcoal-400 sm:text-xl">
+              Experience world-class dental, skin, and aesthetic treatments delivered with the precision and care you deserve.
+            </p>
+
+            {/* CTAs */}
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                href="/book-appointment"
+                className="inline-flex items-center gap-2 rounded-full bg-burgundy-600 px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-burgundy-700 hover:shadow-xl hover:shadow-burgundy-600/20"
+              >
+                Book Your Consultation
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 rounded-full border border-charcoal-200 bg-white px-8 py-4 text-sm font-semibold text-charcoal-700 transition-all duration-300 hover:border-gold-300 hover:shadow-lg"
+              >
+                Explore Services
+              </Link>
+            </div>
+
+            {/* Trust indicators */}
+            <div className="mt-16 flex flex-wrap items-center gap-8 border-t border-cream-200 pt-8">
+              <div>
+                <p className="font-serif text-3xl font-bold text-burgundy-600">10+</p>
+                <p className="text-xs text-charcoal-400">Years Experience</p>
+              </div>
+              <div className="h-8 w-px bg-cream-200" />
+              <div>
+                <p className="font-serif text-3xl font-bold text-burgundy-600">5000+</p>
+                <p className="text-xs text-charcoal-400">Happy Patients</p>
+              </div>
+              <div className="h-8 w-px bg-cream-200" />
+              <div>
+                <p className="font-serif text-3xl font-bold text-burgundy-600">27+</p>
+                <p className="text-xs text-charcoal-400">Treatments</p>
+              </div>
+            </div>
           </div>
 
-          {/* Main heading */}
-          <h1 className="mt-8 font-serif text-4xl font-semibold leading-[1.15] text-charcoal-800 sm:text-5xl md:text-6xl lg:text-7xl">
-            Where Science
-            <br />
-            Meets{" "}
-            <span className="text-gold-gradient">Elegance</span>
-          </h1>
-
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-charcoal-400 sm:text-xl">
-            Experience world-class dental, skin, and aesthetic treatments delivered with the precision and care you deserve.
-          </p>
-
-          {/* CTAs */}
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/book-appointment"
-              className="inline-flex items-center gap-2 rounded-full bg-burgundy-600 px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-burgundy-700 hover:shadow-xl hover:shadow-burgundy-600/20"
-            >
-              Book Your Consultation
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 rounded-full border border-charcoal-200 bg-white px-8 py-4 text-sm font-semibold text-charcoal-700 transition-all duration-300 hover:border-gold-300 hover:shadow-lg"
-            >
-              Explore Services
-            </Link>
-          </div>
-
-          {/* Trust indicators */}
-          <div className="mt-16 flex flex-wrap items-center gap-8 border-t border-cream-200 pt-8">
-            <div>
-              <p className="font-serif text-3xl font-bold text-burgundy-600">10+</p>
-              <p className="text-xs text-charcoal-400">Years Experience</p>
+          {/* Right — clinic photo */}
+          <div className="relative hidden lg:block">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl shadow-burgundy-900/20">
+              <Image
+                src="/clinic-images/clinic1.png"
+                alt="Dr. Shivani Medical & Dental Care"
+                fill
+                priority
+                className="object-cover"
+                sizes="50vw"
+              />
+              {/* Overlay card */}
+              <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/90 px-5 py-4 backdrop-blur-sm shadow-lg">
+                <p className="font-serif text-base font-semibold text-charcoal-800">{CLINIC.name}</p>
+                <p className="mt-0.5 text-xs text-charcoal-400">{CLINIC.address}</p>
+              </div>
             </div>
-            <div className="h-8 w-px bg-cream-200" />
-            <div>
-              <p className="font-serif text-3xl font-bold text-burgundy-600">5000+</p>
-              <p className="text-xs text-charcoal-400">Happy Patients</p>
-            </div>
-            <div className="h-8 w-px bg-cream-200" />
-            <div>
-              <p className="font-serif text-3xl font-bold text-burgundy-600">27+</p>
-              <p className="text-xs text-charcoal-400">Treatments</p>
-            </div>
+            {/* Decorative accents */}
+            <div className="absolute -bottom-6 -right-6 h-48 w-48 rounded-3xl bg-gold-100/60" />
+            <div className="absolute -top-6 -left-6 h-32 w-32 rounded-2xl bg-burgundy-50" />
           </div>
         </div>
       </div>
@@ -88,31 +114,19 @@ function AboutPreview() {
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <AnimateOnScroll>
             <div className="relative">
-              {/* Decorative frame */}
-              <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-gradient-to-br from-burgundy-50 to-cream-100 p-8 sm:p-12">
-                <div className="flex h-full flex-col items-center justify-center text-center">
-                  <div className="flex h-24 w-24 items-center justify-center rounded-full bg-burgundy-600">
-                    <span className="font-serif text-4xl font-bold text-white">S</span>
-                  </div>
-                  <h3 className="mt-6 font-serif text-2xl font-semibold text-charcoal-800">
-                    {DOCTOR.name}
-                  </h3>
-                  <p className="mt-1 text-sm text-gold-500">{DOCTOR.qualifications}</p>
-                  <p className="mt-1 text-xs tracking-wide text-charcoal-400 uppercase">
-                    {DOCTOR.title}
-                  </p>
-                  <div className="luxury-divider mx-auto mt-6" />
-                  <div className="mt-6 flex flex-wrap justify-center gap-2">
-                    {DOCTOR.specializations.slice(0, 4).map((spec) => (
-                      <span
-                        key={spec}
-                        className="rounded-full border border-burgundy-100 bg-white px-3 py-1 text-xs text-burgundy-600"
-                      >
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <div className="aspect-[4/5] overflow-hidden rounded-3xl">
+                <Image
+                  src="/clinic-images/clinic1.png"
+                  alt="Dr. Shivani Medical & Dental Care clinic interior"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              {/* Doctor name overlay */}
+              <div className="absolute bottom-0 left-0 right-0 rounded-b-3xl bg-gradient-to-t from-charcoal-900/80 to-transparent p-6">
+                <h3 className="font-serif text-xl font-semibold text-white">{DOCTOR.name}</h3>
+                <p className="text-sm text-gold-300">{DOCTOR.qualifications} · {DOCTOR.title}</p>
               </div>
               {/* Floating accent */}
               <div className="absolute -bottom-4 -right-4 h-32 w-32 rounded-2xl bg-gold-400/10" />
@@ -291,6 +305,47 @@ function WhyChooseUs() {
   );
 }
 
+/* ─── Clinic Gallery ─── */
+function ClinicGallery() {
+  const images = [
+    { src: "/clinic-images/clinic1.png", alt: "Clinic reception and waiting area" },
+    { src: "/clinic-images/clinic2.png", alt: "Modern dental treatment room" },
+    { src: "/clinic-images/clinic3.png", alt: "Skin & aesthetics treatment suite" },
+    { src: "/clinic-images/clinic4.png", alt: "Clinic exterior and entrance" },
+  ];
+
+  return (
+    <section className="bg-cream-50 py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <AnimateOnScroll>
+          <SectionHeading
+            label="Our Clinic"
+            title="A Space Built for Excellence"
+            subtitle="Step inside Dr. Shivani Medical & Dental Care — where premium aesthetics meet world-class medical care."
+          />
+        </AnimateOnScroll>
+
+        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {images.map((img, idx) => (
+            <AnimateOnScroll key={img.src} delay={idx * 100}>
+              <div className="group relative aspect-[3/4] overflow-hidden rounded-2xl">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </div>
+            </AnimateOnScroll>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Testimonials ─── */
 function TestimonialsSection() {
   return (
@@ -371,6 +426,7 @@ export default function HomePage() {
       <AboutPreview />
       <ServicesPreview />
       <WhyChooseUs />
+      <ClinicGallery />
       <TestimonialsSection />
       <FinalCTA />
     </>
