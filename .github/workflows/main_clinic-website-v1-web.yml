@@ -36,11 +36,15 @@ jobs:
             cp -r public .next/standalone/public
           fi
 
+      - name: Zip standalone for deployment
+        # zip -r includes hidden directories (like .next) — critical for Next.js standalone
+        run: cd .next/standalone && zip -r ../../deploy.zip .
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .next/standalone
+          path: deploy.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -69,14 +73,15 @@ jobs:
             --resource-group clinic-website-v1 \
             --settings \
               HOSTNAME=0.0.0.0 \
+              PORT=8080 \
               SCM_DO_BUILD_DURING_DEPLOYMENT=false \
               WEBSITE_NODE_DEFAULT_VERSION=~20
 
-      - name: "Deploy to Azure Web App"
+      - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: "clinic-website-v1-web"
           slot-name: "Production"
-          package: .
+          package: deploy.zip
           startup-command: "node server.js"
