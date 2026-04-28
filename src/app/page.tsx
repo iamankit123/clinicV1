@@ -3,7 +3,7 @@ import Image from "next/image";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
-import TestimonialCard from "@/components/TestimonialCard";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import {
   CLINIC,
   DOCTOR,
@@ -354,18 +354,14 @@ function TestimonialsSection() {
         <AnimateOnScroll>
           <SectionHeading
             label="Patient Stories"
-            title="Trusted by Thousands"
-            subtitle="Real experiences from patients who chose excellence for their smile, skin, and confidence."
+            title="Loved by Our Patients"
+            subtitle="Verified 5-star reviews from real patients on Google — see why they trust Dr. Shivani for their dental and skin care."
           />
         </AnimateOnScroll>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {TESTIMONIALS.map((t, idx) => (
-            <AnimateOnScroll key={t.name} delay={idx * 100}>
-              <TestimonialCard {...t} index={idx} />
-            </AnimateOnScroll>
-          ))}
-        </div>
+        <AnimateOnScroll>
+          <TestimonialsCarousel testimonials={TESTIMONIALS} />
+        </AnimateOnScroll>
       </div>
     </section>
   );

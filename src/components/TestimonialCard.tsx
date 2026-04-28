@@ -1,21 +1,32 @@
+"use client";
+
+import { useState } from "react";
+
 interface TestimonialCardProps {
   name: string;
-  treatment: string;
+  date: string;
   text: string;
   rating: number;
   index: number;
 }
 
+const PREVIEW_LENGTH = 140;
+
 export default function TestimonialCard({
   name,
-  treatment,
+  date,
   text,
   rating,
   index,
 }: TestimonialCardProps) {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = text.length > PREVIEW_LENGTH;
+  const displayText =
+    !expanded && isLong ? text.slice(0, PREVIEW_LENGTH).trimEnd() + "…" : text;
+
   return (
     <div
-      className="relative rounded-2xl border border-cream-200 bg-white p-8 transition-all duration-500 hover:shadow-lg hover:shadow-gold-100/30"
+      className="relative flex h-full flex-col rounded-2xl border border-cream-200 bg-white p-8 transition-all duration-500 hover:shadow-lg hover:shadow-gold-100/30"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       {/* Quote mark */}
@@ -29,10 +40,12 @@ export default function TestimonialCard({
 
       {/* Stars */}
       <div className="flex gap-1">
-        {Array.from({ length: rating }).map((_, i) => (
+        {Array.from({ length: 5 }).map((_, i) => (
           <svg
             key={i}
-            className="h-4 w-4 text-gold-400"
+            className={`h-4 w-4 ${
+              i < rating ? "text-gold-400" : "text-cream-200"
+            }`}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -43,11 +56,21 @@ export default function TestimonialCard({
 
       {/* Text */}
       <p className="mt-4 text-sm leading-relaxed text-charcoal-500 italic">
-        &ldquo;{text}&rdquo;
+        &ldquo;{displayText}&rdquo;
       </p>
 
+      {isLong && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="mt-3 self-start text-xs font-semibold tracking-wide text-burgundy-600 uppercase transition-colors hover:text-burgundy-700"
+        >
+          {expanded ? "Show less" : "Read more"}
+        </button>
+      )}
+
       {/* Author */}
-      <div className="mt-6 flex items-center gap-3">
+      <div className="mt-auto flex items-center gap-3 pt-6">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-burgundy-50">
           <span className="font-serif text-sm font-semibold text-burgundy-600">
             {name.charAt(0)}
@@ -55,7 +78,7 @@ export default function TestimonialCard({
         </div>
         <div>
           <p className="text-sm font-semibold text-charcoal-800">{name}</p>
-          <p className="text-xs text-gold-500">{treatment}</p>
+          <p className="text-xs text-gold-500">{date}</p>
         </div>
       </div>
     </div>

@@ -6,14 +6,54 @@ import { CLINIC, DOCTOR, SERVICE_CATEGORIES } from "@/lib/constants";
 
 export default function BookAppointmentPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const allServices = SERVICE_CATEGORIES.flatMap((cat) =>
     cat.services.map((s) => `${s.title} (${cat.subtitle})`)
   );
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setErrorMsg(null);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      name: String(data.get("name") || ""),
+      phone: String(data.get("phone") || ""),
+      email: String(data.get("email") || ""),
+      date: String(data.get("date") || ""),
+      time: String(data.get("time") || ""),
+      service: String(data.get("service") || ""),
+      message: String(data.get("message") || ""),
+    };
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/book-appointment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+      };
+      if (!res.ok || !json.ok) {
+        setErrorMsg(
+          json.error ||
+            "We couldn't submit your request. Please try again or call us directly."
+        );
+        return;
+      }
+      form.reset();
+      setSubmitted(true);
+    } catch {
+      setErrorMsg(
+        "Network error. Please check your connection and try again, or call us directly."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -192,12 +232,22 @@ export default function BookAppointmentPage() {
                   />
                 </div>
 
+                {errorMsg && (
+                  <div
+                    role="alert"
+                    className="rounded-xl border border-burgundy-200 bg-burgundy-50 px-4 py-3 text-sm text-burgundy-700"
+                  >
+                    {errorMsg}
+                  </div>
+                )}
+
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-burgundy-600 px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-burgundy-700 hover:shadow-xl hover:shadow-burgundy-600/20 sm:w-auto"
+                  disabled={submitting}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-burgundy-600 px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-burgundy-700 hover:shadow-xl hover:shadow-burgundy-600/20 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
-                  Request Appointment
+                  {submitting ? "Sending…" : "Book Now"}
                   <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>

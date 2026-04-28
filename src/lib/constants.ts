@@ -248,42 +248,56 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
 ];
 
+// Real Google Maps reviews for Dr. Shivani Medical And Dental Care
+// Source: https://www.google.com/maps/place/Dr.+Shivani+Medical+And+Dental+Care
 export const TESTIMONIALS = [
   {
-    name: "Priya Mehta",
-    treatment: "Smile Design",
+    name: "Riya Vaish",
+    date: "2 months ago",
     rating: 5,
-    text: "Dr. Shivani completely transformed my smile. The attention to detail and the final result exceeded all my expectations. I finally feel confident smiling in photos.",
+    text: "Really good treatment and amazing doctor. Thank you, maine treatment karaya — bahut achi facilities mili thi, and all good 👍",
   },
   {
-    name: "Rahul Kapoor",
-    treatment: "Dental Implants",
+    name: "Nitin Rana",
+    date: "2 months ago",
     rating: 5,
-    text: "After years of hesitation, I got implants done here. The entire process was painless and professional. Dr. Shivani's expertise is truly world-class.",
+    text: "Good doctor for dental and skin. All good treatment and care fully. Thank you so much, doctor maam.",
   },
   {
-    name: "Ananya Sharma",
-    treatment: "Skin Brightening & BB Glow",
+    name: "Krishan Bhan Singh",
+    date: "4 months ago",
     rating: 5,
-    text: "My skin has never looked this radiant. The BB Glow facial combined with the brightening treatment gave me a natural, lit-from-within glow. Absolutely love this clinic.",
+    text: "Tried multiple dentists around, but finally got correct treatment at this clinic. Dr. Shivani is very polite and professional.",
   },
   {
-    name: "Vikram Reddy",
-    treatment: "Hair Regrowth & PRP",
+    name: "Pushpa Rana",
+    date: "2 months ago",
     rating: 5,
-    text: "I was losing confidence along with my hair. The PRP sessions and Dr. Shivani's personalised treatment plan have shown remarkable results in just three months.",
+    text: "Excellent 👌 Good doctor for dental and skin. All good treatments — good skill, the results are good 👍😊",
   },
   {
-    name: "Meera Joshi",
-    treatment: "Braces & Teeth Whitening",
+    name: "Suresh Chand",
+    date: "4 months ago",
     rating: 5,
-    text: "From the first consultation to the final result — pure luxury experience. The ceramic braces were so discreet, and the whitening made my teeth brilliantly white.",
+    text: "Doctor's behaviour and the way of treating patients is excellent.",
   },
   {
-    name: "Amit Verma",
-    treatment: "Root Canal Treatment",
+    name: "Shashwat Khokhar",
+    date: "2 months ago",
     rating: 5,
-    text: "I was terrified of RCT but Dr. Shivani made it completely painless. Her gentle approach and advanced equipment made the experience surprisingly comfortable.",
+    text: "The most professional and honest doctor you can get in Swaroop Nagar.",
+  },
+  {
+    name: "Sugreev Prasad",
+    date: "4 months ago",
+    rating: 5,
+    text: "Great quality of teeth cleaning and crown placement for my teeth. Really appreciate.",
+  },
+  {
+    name: "Himanshi Rana",
+    date: "2 months ago",
+    rating: 5,
+    text: "She is an amazing doctor and a good human being.",
   },
 ];
 
