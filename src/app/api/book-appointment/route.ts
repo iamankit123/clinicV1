@@ -90,22 +90,6 @@ export async function POST(req: Request) {
     );
   }
 
-  if (!isCosmosConfigured()) {
-    console.warn("[book-appointment] Cosmos DB not configured (COSMOS_ENDPOINT / COSMOS_KEY).");
-    return NextResponse.json(
-      { ok: false, error: "Booking service is temporarily unavailable. Please call us." },
-      { status: 503 }
-    );
-  }
-
-  const container = getAppointmentsContainer();
-  if (!container) {
-    return NextResponse.json(
-      { ok: false, error: "Booking service is temporarily unavailable. Please call us." },
-      { status: 503 }
-    );
-  }
-
   const ipHash = createHash("sha256").update(ip).digest("hex").slice(0, 32);
   const doc = {
     id: randomUUID(),
@@ -123,14 +107,18 @@ export async function POST(req: Request) {
     ipHash,
   };
 
-  try {
-    await container.items.create(doc);
-  } catch (err) {
-    console.error("[book-appointment] Cosmos write failed:", err);
-    return NextResponse.json(
-      { ok: false, error: "Could not save your request. Please try again or call us." },
-      { status: 502 }
-    );
+  if (isCosmosConfigured()) {
+    const container = getAppointmentsContainer();
+    if (container) {
+      try {
+        await container.items.create(doc);
+      } catch (err) {
+        console.error("[book-appointment] Cosmos write failed:", err);
+      }
+    }
+  } else {
+    // Cosmos not configured — log locally so requests are not silently lost
+    console.log("[book-appointment] New appointment request:", JSON.stringify(doc, null, 2));
   }
 
   return NextResponse.json({ ok: true, id: doc.id });

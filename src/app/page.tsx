@@ -83,8 +83,8 @@ function Hero() {
           <div className="relative hidden lg:block">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl shadow-burgundy-900/20">
               <Image
-                src="/clinic-images/clinic1.png"
-                alt="Dr. Shivani Medical & Dental Care"
+                src="/clinic-images/clinic3.png"
+                alt="Dr. Shivani Medical & Dental Care — treatment suite"
                 fill
                 priority
                 className="object-cover"
@@ -116,8 +116,8 @@ function AboutPreview() {
             <div className="relative">
               <div className="aspect-[4/5] overflow-hidden rounded-3xl">
                 <Image
-                  src="/clinic-images/clinic1.png"
-                  alt="Dr. Shivani Medical & Dental Care clinic interior"
+                  src="/clinic-images/clinic2.png"
+                  alt="Dr. Shivani Medical & Dental Care clinic waiting area"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -308,10 +308,10 @@ function WhyChooseUs() {
 /* ─── Clinic Gallery ─── */
 function ClinicGallery() {
   const images = [
-    { src: "/clinic-images/clinic1.png", alt: "Clinic reception and waiting area" },
-    { src: "/clinic-images/clinic2.png", alt: "Modern dental treatment room" },
-    { src: "/clinic-images/clinic3.png", alt: "Skin & aesthetics treatment suite" },
-    { src: "/clinic-images/clinic4.png", alt: "Clinic exterior and entrance" },
+    { src: "/clinic-images/clinic1.png", alt: "Clinic exterior and entrance signboard" },
+    { src: "/clinic-images/clinic2.png", alt: "Clinic waiting area with seating" },
+    { src: "/clinic-images/clinic3.png", alt: "Modern dental treatment room" },
+    { src: "/clinic-images/clinic4.png", alt: "Doctor's consultation room" },
   ];
 
   return (
