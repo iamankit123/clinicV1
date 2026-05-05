@@ -1,9 +1,7 @@
 ---
-description: Visual UX review via Playwright screenshots. Review as Product Designer, Senior PM, or CEO of a premium product with 10M customers.
-allowed-tools:
-  - Bash
-  - Read
-  - Write
+name: ux-review
+description: Visual UX review via Playwright screenshots. Reviews the site as a Product Designer, Senior PM, or CEO evaluating a premium product with 10 million customers.
+allowed-tools: Bash Read Write
 ---
 
 # /ux-review — Expert UX Review
@@ -47,7 +45,6 @@ const fs = require('fs');
   await page.setViewportSize({ width: 1440, height: 900 });
   for (const [route, name] of [['/', 'home'], ['/about', 'about'], ['/services', 'services'], ['/contact', 'contact'], ['/book-appointment', 'book-appointment']]) {
     await page.goto('http://localhost:3001' + route, { waitUntil: 'networkidle', timeout: 30000 });
-    // Slow scroll to trigger animations, then screenshot full page
     await page.evaluate(async () => {
       for (let i = 0; i < document.body.scrollHeight; i += 300) {
         window.scrollTo(0, i);
@@ -85,10 +82,10 @@ Save as `D:/Personal/clinic/ux-review-runner.js`, run it, then read every screen
 ## Step 4 — Review criteria by persona
 
 ### Product Designer lens
-Evaluate each page against these standards (imagine this is a premium SaaS or luxury brand site):
-- **Visual hierarchy:** Is the most important thing the most prominent thing?
+Evaluate against these standards (imagine this is a luxury brand or premium SaaS site):
+- **Visual hierarchy:** Is the most important thing the most prominent?
 - **Spacing & breathing room:** Does it feel tight/cramped or premium/airy?
-- **Typography:** Consistent scale? Readable weights? Line lengths comfortable?
+- **Typography:** Consistent scale? Readable weights? Comfortable line lengths?
 - **Colour system:** Does burgundy/gold/cream hold up across all sections? Any clashes?
 - **Hero impact:** Would this stop a scroll? Does it communicate premium in 3 seconds?
 - **Images:** Quality, placement, cropping — do they add or distract?
@@ -111,14 +108,11 @@ Evaluate each page against these standards (imagine this is a premium SaaS or lu
 - **Brand premium:** Does this look like a ₹500 or ₹5000 consultation clinic?
 - **Differentiation:** What makes Dr. Shivani's clinic stand out vs any other clinic site?
 - **Trust at a glance:** Does the doctor's credibility come through immediately?
-- **Competitive bar:** Compare mentally to the best clinic/doctor sites you know. Where does this rank?
 - **Pride test:** Would I confidently share this URL with 10 influential people?
 
 ---
 
 ## Step 5 — Structured report
-
-Write the report in this format:
 
 ```
 ## UX Review — [date] — [Persona]
@@ -139,7 +133,7 @@ One honest sentence.
 Reasoning.
 ```
 
-Be direct and specific. Name exact sections and elements. Avoid vague praise. If something is poor, say so clearly — the goal is a site worthy of 10 million patients.
+Be direct and specific. Name exact sections and elements. Avoid vague praise. If something is poor, say so clearly.
 
 ---
 

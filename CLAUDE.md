@@ -53,7 +53,7 @@ Next.js 16 clinic website for Dr. Shivani Singh (dental + skin + aesthetics), De
 
 ## Skills
 
-These slash commands are available in this project (`.claude/commands/`):
+These slash commands are available in this project (`.claude/skills/`):
 
 | Command | What it does |
 |---------|-------------|

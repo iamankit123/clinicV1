@@ -1,10 +1,7 @@
 ---
+name: content
 description: Update clinic content — address, hours, testimonials, services, doctor bio, map. All changes go through constants.ts.
-allowed-tools:
-  - Read
-  - Edit
-  - Bash
-  - Glob
+allowed-tools: Read Edit Bash Glob
 ---
 
 # /content — Update Clinic Content

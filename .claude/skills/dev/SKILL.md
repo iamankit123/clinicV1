@@ -1,11 +1,7 @@
 ---
-description: Development workflow — build, deploy, status check, or local setup. Asks what to do.
-allowed-tools:
-  - Bash
-  - Read
-  - Edit
-  - Glob
-  - Grep
+name: dev
+description: Development workflow — build, deploy, status check, or local setup. Asks what to do when invoked.
+allowed-tools: Bash Read Edit Glob Grep
 ---
 
 # /dev — Development Workflow
@@ -54,7 +50,6 @@ cd D:/Personal/clinic && npm run build
 6. Monitor GitHub Actions until complete:
    ```bash
    gh run list --limit 1
-   # Poll every 30s until status is 'completed'
    ```
 7. After success, run the Status check below.
 8. Update `STATUS.md` with a timestamped entry.

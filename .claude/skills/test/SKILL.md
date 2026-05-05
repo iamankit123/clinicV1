@@ -1,10 +1,7 @@
 ---
-description: Full functional testing — every button, form, navigation, scroll, admin data save. Reports pass/fail per feature.
-allowed-tools:
-  - Bash
-  - Read
-  - Write
-  - Edit
+name: test
+description: Full functional testing via Playwright — every button, form, navigation, scroll, admin data save. Reports pass/fail per feature.
+allowed-tools: Bash Read Write Edit
 ---
 
 # /test — Functional Specification Testing
