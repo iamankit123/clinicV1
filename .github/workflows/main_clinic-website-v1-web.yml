@@ -75,7 +75,12 @@ jobs:
               HOSTNAME=0.0.0.0 \
               PORT=8080 \
               SCM_DO_BUILD_DURING_DEPLOYMENT=false \
-              WEBSITE_NODE_DEFAULT_VERSION=~20
+              WEBSITE_NODE_DEFAULT_VERSION=~20 \
+              COSMOS_ENDPOINT="${{ secrets.COSMOS_ENDPOINT }}" \
+              COSMOS_KEY="${{ secrets.COSMOS_KEY }}" \
+              COSMOS_DATABASE="clinic" \
+              COSMOS_CONTAINER="appointments" \
+              ADMIN_API_KEY="${{ secrets.ADMIN_API_KEY }}"
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
