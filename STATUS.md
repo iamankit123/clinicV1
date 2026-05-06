@@ -5,6 +5,17 @@
 
 ---
 
+## [2026-05-06] Cosmos DB wired up — full booking → admin flow working
+- Created `clinic` database and `appointments` container (partition key: `/status`) in Cosmos DB `clinic-website-v1-db`
+- `.env.local` configured with `COSMOS_ENDPOINT`, `COSMOS_KEY`, `COSMOS_DATABASE`, `COSMOS_CONTAINER`, `ADMIN_API_KEY`
+- GitHub Secrets added: `COSMOS_ENDPOINT`, `COSMOS_KEY`, `ADMIN_API_KEY`
+- Workflow updated to pass secrets as Azure App Service settings on every deploy
+- Tested end-to-end locally: booking saves to Cosmos, appears in `/admin` with correct password
+- Admin password: stored in `ADMIN_API_KEY` secret (not in code)
+- Pushed: commit `0a2e56d` — Azure deployment in progress
+
+---
+
 ## [2026-05-05] Project infrastructure — skills, CLAUDE.md, STATUS.md
 - Created `.claude/commands/` with 6 project-local skills: `/dev`, `/content`, `/test`, `/ux-review`, `/portal`, `/debug`
 - Created `CLAUDE.md` at project root for persistent Claude session context
